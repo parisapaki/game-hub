@@ -9,7 +9,7 @@ export default function GameGrid() {
     <div>
       <Text>{error}</Text>
 
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={8}>
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={3}>
         {loading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
         {data.map((game) => (
