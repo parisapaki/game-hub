@@ -5,8 +5,12 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import SortSelected from "./components/SortSelected";
+export interface GameQuery {
+  searchText: string;
+  genre: Genre | null;
+}
 export default function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   return (
     <Grid
       templateAreas={{
@@ -19,13 +23,15 @@ export default function App() {
       }}
     >
       <GridItem area={"nav"}>
-        <Navbar />
+        <Navbar
+          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+        />
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"}>
           <GenreList
-            selectedGenre={selectedGenre}
-            onSelectedGenre={(Genre) => setSelectedGenre(Genre)}
+            selectedGenre={gameQuery.genre}
+            onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           />
         </GridItem>
       </Show>
@@ -34,7 +40,7 @@ export default function App() {
           <SortSelected />
         </HStack>
 
-        <GameGrid selectedGenre={selectedGenre} />
+        <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );
