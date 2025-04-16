@@ -4,10 +4,11 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
-import SortSelected from "./components/SortSelected";
+import SortSelected from "./components/SortSelector";
 export interface GameQuery {
   searchText: string;
   genre: Genre | null;
+  sortOrders: string;
 }
 export default function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -37,7 +38,12 @@ export default function App() {
       </Show>
       <GridItem area={"main"}>
         <HStack marginBottom="4">
-          <SortSelected />
+          <SortSelected
+            sortOrder={gameQuery.sortOrders}
+            onsortSelect={(sortOrders) =>
+              setGameQuery({ ...gameQuery, sortOrders })
+            }
+          />
         </HStack>
 
         <GameGrid gameQuery={gameQuery} />
