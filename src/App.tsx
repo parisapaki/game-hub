@@ -5,6 +5,8 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import SortSelected from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
+import { MdPadding } from "react-icons/md";
 export interface GameQuery {
   searchText: string;
   genre: Genre | null;
@@ -37,7 +39,8 @@ export default function App() {
         </GridItem>
       </Show>
       <GridItem area={"main"}>
-        <HStack marginBottom="4">
+        <GameHeading gameQuery={gameQuery} />
+        <HStack marginY={4}>
           <SortSelected
             sortOrder={gameQuery.sortOrders}
             onsortSelect={(sortOrders) =>
