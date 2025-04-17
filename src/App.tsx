@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import SortSelected from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
-import { MdPadding } from "react-icons/md";
 export interface GameQuery {
   searchText: string;
   genre: Genre | null;
