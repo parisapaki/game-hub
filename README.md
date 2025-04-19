@@ -26,3 +26,5 @@ To run this project locally:
 ```bash
 git clone https://github.com/parisapaki/game-hub.git
 cd game-hub
+npm install
+npm run dev
