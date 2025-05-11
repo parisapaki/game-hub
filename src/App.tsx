@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import SortSelected from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import TodoList from "./react-query/TodoList";
 export interface GameQuery {
   searchText: string;
   genre: Genre | null;
@@ -35,6 +36,7 @@ export default function App() {
             selectedGenre={gameQuery.genre}
             onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           />
+          <TodoList />
         </GridItem>
       </Show>
       <GridItem area={"main"}>
